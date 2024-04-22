@@ -53,6 +53,27 @@ public class GamerDao {
 		JdbcTemplate.close(pstmt);
 		return result;
 	}
+	//이메일 중복 확인
+	public int selectCheckEmail(Connection conn, String gamerEmail) {
+		int result =0;
+		String sql = "SELECT COUNT(*) c FROM GAMER WHERE GAMER_EMAIL=?";
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, gamerEmail);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt("c");
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		JdbcTemplate.close(rs);
+		JdbcTemplate.close(pstmt);
+		return result;
+	}
+	//회원가입
 	public int insert(Connection conn, GamerJoinDto dto) {
 		int result = 0 ;
 		String sql = "INSERT INTO GAMER (GAMER_ID,GAMER_PWD,GAMER_EMAIL) VALUES (?,?,?)";

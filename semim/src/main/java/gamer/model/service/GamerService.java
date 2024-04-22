@@ -28,7 +28,17 @@ public class GamerService {
 		close(conn);
 		return result;
 	}
+	//이메일 중복 확인
+	public int selectCheckId(String gamerEmail) {
+		int result = 0;
+		Connection conn = getConnetion(true);
+		result = dao.selectCheckEmail(conn, gamerEmail);
+		close(conn);
+		return result;
+	}
 	
+	
+	//회원가입
 	public int insert(GamerJoinDto dto) {
 		int result = 0;
 		Connection conn = getConnetion(true);

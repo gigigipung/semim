@@ -20,13 +20,16 @@
 <script>
 $(loadHandler);
 function loadHandler(){
-	$("btn.checkid").on("click",btnCheckidClickHandler);
+	$(".btn.checkid").on("click",btnCheckidClickHandler);
 }
 function btnCheckidClickHandler(){
+	console.log("중복확인");
 	var idVal = $("[name=id]").val();
 	$.ajax({
 		async : false,
-		
+		url : "${pageContext.request.contextPath}/checkemail.ajax"
+		,method : "post"
+		,data : { cid : $("[name=id]").val,}
 	});
 }
 </script>
