@@ -1,4 +1,4 @@
-package gamer.model.dto;
+package gamer.controller;
 
 import java.io.IOException;
 import java.net.URLEncoder;
@@ -13,13 +13,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class GamerCreateDto
  */
 @WebServlet("/join/completesignup")
-public class GamerCreateDto extends HttpServlet {
+public class GamerCreateController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GamerCreateDto() {
+    public GamerCreateController() {
         super();
         // TODO Auto-generated constructor stub
     }
