@@ -2,3 +2,5 @@
 /.metadata
 /Servers
 semim/resources/db.properties
+semim/src/main/java/jdbc/common/driver.properties
+semim/src/main/java/jdbc/common/driver.properties
