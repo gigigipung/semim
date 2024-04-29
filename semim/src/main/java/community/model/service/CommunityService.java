@@ -3,15 +3,22 @@ package community.model.service;
 import static jdbc.common.JdbcTemplate.*;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.apache.ibatis.session.SqlSession;
 
 import community.model.dao.CommunityDao;
 import community.model.dto.CommunityInsertDto;
 import community.model.dto.CommunityListDto;
 import community.model.dto.CommunityReadDto;
+import community.model.dto.CommunityReplyListDto;
 import community.model.dto.FileReadDto;
+import community.model.dto.CommunityReplyWriteDto;
+import static jdbc.common.MybatisTemplate.*;
 
 public class CommunityService {
 	private CommunityDao dao =new CommunityDao();
@@ -55,6 +62,16 @@ public class CommunityService {
 		return result;
 	}
 	
+	// select list - community reply 댓글 불러오기
+	public List<CommunityReplyListDto> selectCommunityReplyList(Integer communityId) {
+		List<CommunityReplyListDto> result = null;
+		SqlSession session = getSqlSession(true);
+		result = dao.selectCommunityReplyList(session, communityId);
+		session.close();
+		return result;
+	}
+	
+	
 	// select one
 		public CommunityReadDto selectOne(Integer CommunityId) {
 			CommunityReadDto result = null;
@@ -72,6 +89,29 @@ public class CommunityService {
 			close(conn);
 			return result;
 		}
+		// insert - boardreply 댓글 작성
+		public int insertReply(CommunityReplyWriteDto dto) {
+			int result = 0;
+			int resultupdate = 0;
+			Connection conn = getConnetion(true);
+			autoCommit(conn, false);
+			if(dto.getReplyId() != 0) {
+				resultupdate = dao.updateReplyStep(conn, dto.getReplyId());
+				if(resultupdate > -1) {
+					result = dao.insertRReply(conn, dto);
+				}
+			} else {
+				result = dao.insertReply(conn, dto);
+			}
+			if(resultupdate > -1 && result > 0) {
+				commit(conn);
+			}else {
+				rollback(conn);
+			}
+			close(conn);
+			return result;
+		}
+		
 		// insert
 		public int insert(CommunityInsertDto dto) {
 			int result = 0;
@@ -81,4 +121,8 @@ public class CommunityService {
 			close(conn);
 			return result;
 		}
+		
+		
+		
+		
 }

@@ -7,11 +7,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.ibatis.session.SqlSession;
+
 import community.model.dto.CommunityInsertDto;
 import community.model.dto.CommunityListDto;
 import community.model.dto.CommunityReadDto;
+import community.model.dto.CommunityReplyListDto;
 import community.model.dto.FileReadDto;
 import community.model.dto.FileWriterDto;
+import community.model.dto.CommunityReplyWriteDto;
 
 import static jdbc.common.JdbcTemplate.close;
 public class CommunityDao {
@@ -43,6 +47,11 @@ public class CommunityDao {
 			close(rs);
 			close(pstmt);
 			return result;
+		}
+		
+		// select list - board reply : board_id 댓글 읽기
+		public List<CommunityReplyListDto> selectCommunityReplyList(SqlSession session, Integer communityId) {
+			return session.selectList("communityMapper.selectCommunityReplyList", communityId);
 		}
 		
 	// select total Count
@@ -173,6 +182,77 @@ public class CommunityDao {
 			System.out.println("commnumityDao insert() return : "+result);
 			return result;
 		}
+		
+		// insert - Reply 댓글 대댓글
+		public int insertRReply(Connection conn, CommunityReplyWriteDto dto) {
+			int result = 0;  // 1 정상, 0비정상
+			String sql = " INSERT INTO REPLY VALUES ( (SELECT NVL(MAX(REPLY_ID),0)+1 FROM REPLY),"
+					+ "             ?, ?, ? , default , "
+					+ "            (SELECT REPLY_LEVEL+1 FROM REPLY WHERE REPLY_ID = ? )  , "
+					+ "            (SELECT REPLY_REF     FROM REPLY WHERE REPLY_ID = ? )  , "
+					+ "            (SELECT REPLY_STEP+1  FROM REPLY WHERE REPLY_ID = ? )  )";
+			PreparedStatement pstmt = null;
+			try {
+				pstmt = conn.prepareStatement(sql);
+				// ? 처리
+				pstmt.setInt(1, dto.getCommunityId());
+				pstmt.setString(2, dto.getGamerId());
+				pstmt.setString(3, dto.getReplyContent());
+				pstmt.setInt(4, dto.getReplyId());
+				pstmt.setInt(5, dto.getReplyId());
+				pstmt.setInt(6, dto.getReplyId());
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			close(pstmt);
+			return result;
+		}
+		
+		// insert - Reply 댓글 원본글
+		public int insertReply(Connection conn, CommunityReplyWriteDto dto) {
+			int result = 0;
+			String sql = " INSERT INTO REPLY VALUES"
+					+ "        ( (SELECT NVL(MAX(REPLY_ID),0)+1 FROM REPLY) , ?, "
+					+ "            ?, ? , default , "
+					+ "            DEFAULT , (SELECT NVL(MAX(REPLY_ID),0)+1 FROM REPLY), DEFAULT )";
+			PreparedStatement pstmt = null;
+			try {
+				pstmt = conn.prepareStatement(sql);
+				// ? 처리
+				pstmt.setInt(1, dto.getCommunityId());
+				pstmt.setString(2, dto.getGamerId());
+				pstmt.setString(3, dto.getReplyContent());
+				result = pstmt.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			close(pstmt);
+			return result;
+		}
+		
+		// update - reply Step
+				public int updateReplyStep(Connection conn, Integer replyId) {
+					System.out.println("boardDao updateReplyStep() param : "+replyId);
+					int result = -1;  // 0~n 정상이므로 비정상인경우-1
+					String sql = "UPDATE REPLY SET REPLY_STEP = REPLY_STEP+1  WHERE "
+							+ "            REPLY_REF = ( SELECT REPLY_REF FROM REPLY WHERE REPLY_ID = ?)"
+							+ "            AND "
+							+ "            REPLY_STEP > ( SELECT REPLY_STEP FROM REPLY WHERE REPLY_ID = ? )";
+					PreparedStatement pstmt = null;
+					try {
+						pstmt = conn.prepareStatement(sql);
+						// ? 처리
+						pstmt.setInt(1, replyId);
+						pstmt.setInt(2, replyId);
+						result = pstmt.executeUpdate();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
+					close(pstmt);
+					System.out.println("boardDao updateReplyStep() return : "+result);
+					return result;
+				}
 		
 		// update - readCount
 		public int updateReadCount(Connection conn, Integer communityId) {

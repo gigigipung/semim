@@ -5,8 +5,8 @@
 
 function checkLogin(msg,prePage){
 	//Login 페이지로 이동
-	var sslogin = "${sssLogin }";  // EL 은 ""안에 작성되어 blank 상황에 문법적 오류 발생을 방지함.
-	/* 
+	var sslogin = "${sss }";  // EL 은 ""안에 작성되어 blank 상황에 문법적 오류 발생을 방지함.
+	
 	if ( !sslogin ) {
 		var result = confirm(msg);
 		if( result ){
@@ -16,7 +16,7 @@ function checkLogin(msg,prePage){
 		}
 		return true;
 	}
-	 */
+	 
 	return false;
 }
 

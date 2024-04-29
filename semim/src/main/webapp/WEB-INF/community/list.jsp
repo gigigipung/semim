@@ -32,7 +32,7 @@ padding: 0 10px;
 [[ totalPageCount : ${map.totalPageCount }]]<br>
 [[ startPageNum : ${map.startPageNum }]]<br>
 [[ endPageNum : ${map.endPageNum }]]<br>
-<h1>Semim Board List</h1>
+<h1>Community</h1>
 
 	
 <div><button type="button" class="btn write" >글쓰기</button></div>

@@ -36,6 +36,7 @@ public class CommunityReadController extends HttpServlet {
 			System.out.println(service.selectOne(CommunityId));
 			request.setAttribute("dto", service.selectOne(CommunityId));
 			request.getRequestDispatcher("/WEB-INF/community/read.jsp").forward(request, response);
+			
 		}catch(NumberFormatException e) {
 			System.out.println("!!! NumberFormatException !!!!!!");
 			response.sendRedirect(request.getContextPath()+"community/list");
