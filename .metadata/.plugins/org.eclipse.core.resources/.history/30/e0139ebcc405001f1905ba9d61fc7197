@@ -1,0 +1,12 @@
+package community.model.dto;
+
+public class communityReplyWriteDto {
+	REPLY_ID         NOT NULL NUMBER         
+	BOARD_ID         NOT NULL NUMBER         
+	GAMER_ID         NOT NULL VARCHAR2(50)   
+	REPLY_CONTENT             VARCHAR2(4000) 
+	REPLY_WRITE_TIME NOT NULL TIMESTAMP(6)   
+	REPLY_LEVEL      NOT NULL NUMBER         
+	REPLY_REF        NOT NULL NUMBER         
+	REPLY_STEP       NOT NULL NUMBER 
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;kh.mstatic.ank&apos; to &apos;BankAccount&apos;&#x0D;&#x0A;- Original project: &apos;07_OOP&apos;&#x0D;&#x0A;- Original element: &apos;kh.mstatic.ank&apos;&#x0D;&#x0A;- Renamed element: &apos;kh.mstatic.BankAccount&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;ank&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;kh.mstatic{ank.java[ank" matchStrategy="1" name="BankAccount" qualified="false" references="true" similarDeclarations="false" stamp="1707190054691" textual="false" version="1.0"/>
+</session>

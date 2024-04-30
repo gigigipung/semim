@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.kh.practice.snack.controller.SnacjController&apos; to &apos;SnackController&apos;&#x0D;&#x0A;- Original project: &apos;07_OOP_EX&apos;&#x0D;&#x0A;- Original element: &apos;com.kh.practice.snack.controller.SnacjController&apos;&#x0D;&#x0A;- Renamed element: &apos;com.kh.practice.snack.controller.SnackController&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;SnacjController&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.kh.practice.snack.controller{SnacjController.java[SnacjController" matchStrategy="1" name="SnackController" qualified="false" references="true" similarDeclarations="false" stamp="1707269967189" textual="false" version="1.0"/>
+</session>

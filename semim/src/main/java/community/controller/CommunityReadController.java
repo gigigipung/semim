@@ -33,7 +33,6 @@ public class CommunityReadController extends HttpServlet {
 		String CommunityIdStr = request.getParameter("id");
 		try {
 			int CommunityId = Integer.parseInt(CommunityIdStr);
-			System.out.println(service.selectOne(CommunityId));
 			request.setAttribute("dto", service.selectOne(CommunityId));
 			request.getRequestDispatcher("/WEB-INF/community/read.jsp").forward(request, response);
 			

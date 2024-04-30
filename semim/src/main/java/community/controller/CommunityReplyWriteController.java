@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import community.model.dto.CommunityReplyListDto;
 import community.model.dto.CommunityReplyWriteDto;
 import community.model.service.CommunityService;
+import gamer.model.dto.GamerInfoDto;
 
 /**
  * Servlet implementation class CommunityReplyWriteController
@@ -46,7 +47,12 @@ public class CommunityReplyWriteController extends HttpServlet {
 		String replyContent = request.getParameter("replyContent");
 		System.out.println(replyContent);
 		// TODO LOGIN
-		String gamerId = "qw";  //TODO
+		@SuppressWarnings("unchecked")
+		GamerInfoDto loginInfo= (GamerInfoDto) request.getSession().getValue("sss");
+		String gamerId = loginInfo.getGamerId();
+		
+		
+		
 		
 		Gson gson = new Gson();
 		

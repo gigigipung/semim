@@ -1,0 +1,6 @@
+package shop.model.dao;
+
+public class ShopDao {
+
+	public Integer selectTotalCount(session)
+}

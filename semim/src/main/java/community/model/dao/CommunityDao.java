@@ -149,7 +149,7 @@ public class CommunityDao {
 			sql+="		VALUES (SEQ_COMMUNITY_ID.nextval, ?, ?, default, ?, default) ";
 			if(dto.getFileList()!= null && dto.getFileList().size()>0) {
 				for(FileWriterDto filedto :dto.getFileList()) {
-			sql+="	INTO FILES (FILE_ID, COMMUNITY_ID, FILE_PATH, FILE_ORIGINAL) ";
+			sql+="	INTO FILES (COMMUNITY_ID, FILE_ID, FILE_PATH, FILE_ORIGINAL) ";
 			sql+="		VALUES (SEQ_COMMUNITY_ID.nextval, ?, ?, ?) ";
 				}
 			}
@@ -257,13 +257,14 @@ public class CommunityDao {
 		// update - readCount
 		public int updateReadCount(Connection conn, Integer communityId) {
 			int result = 0;
-			String sql = "update community set read_count=read_count+1 where community_id=?";  //TODO
+			String sql = "update community set read_count=read_count+1 where community_id=?"; 
 			PreparedStatement pstmt = null;
 			try {
 				pstmt = conn.prepareStatement(sql);
 				// ? 처리
 				pstmt.setInt(1, communityId);
 				result = pstmt.executeUpdate();
+				System.out.println("일까");
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

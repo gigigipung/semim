@@ -1,0 +1,9 @@
+package shop.model.dao;
+
+import org.apache.ibatis.session.SqlSession;
+
+public class ShopDao {
+	public Integer selectTotalCount(SqlSession session) {
+		
+	}
+}

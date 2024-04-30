@@ -1,0 +1,9 @@
+#\uC8Fc\uC11d\uB9C8\uD06C
+#comment symbol
+#driver properties
+#key=value
+#String=string
+jdbc.driver=oracle.jdbc.driver.OracleDriver
+jdbc.semi.localhost.url=jdbc:oracle:thin:@localhost:1521:XE
+jdbc.semi.username=gipung
+jdbc.semi.password=950214

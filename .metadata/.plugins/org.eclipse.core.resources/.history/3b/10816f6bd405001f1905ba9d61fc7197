@@ -1,0 +1,30 @@
+package mybatis.common;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+public class MybatisTemplate {
+	public static SqlSession getSqlSession() {
+		String resource = "mybatis-config.xml";
+		SqlSession session = null;
+		System.out.println("마이바티스");
+		try {
+			System.out.println("마이바티스2");
+			InputStream inputStream = Resources.getResourceAsStream(resource);
+			System.out.println("마이바티스3");
+			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+			System.out.println("마이바티스4");
+			session = sqlSessionFactory.openSession(); 
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return session;
+	}
+}
