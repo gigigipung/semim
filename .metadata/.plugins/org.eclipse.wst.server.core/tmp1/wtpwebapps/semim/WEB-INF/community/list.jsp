@@ -1,3 +1,4 @@
+<jsp:include page="/WEB-INF/common_css_firstlink.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -34,7 +35,7 @@ padding: 0 10px;
 
 	
 <div><button type="button" class="btn write" >글쓰기</button></div>
-<div class="board grid">
+<div class="board grid commu">
 <c:choose>
 	<c:when test="${empty map.dtolist }">
 	글 없어요.

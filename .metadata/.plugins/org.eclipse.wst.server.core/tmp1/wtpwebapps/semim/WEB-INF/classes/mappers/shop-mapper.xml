@@ -6,11 +6,31 @@
 		select count(*) cnt from SHOP
 	</select>
 	
-	<select id="selectPageList" resultType="ShopListDto" parameterType="map">
+	<select id="selectPageJapanList" resultType="ShopListDto" parameterType="map">
 		select GAME_ID, NATIONAL_CODE,GAME_IMG, GAME_NAME, GAME_PRICE ,to_char(GAME_OPEN,'YYYY-MM-DD') GAME_OPEN
 			from (select t1.*, rownum rn
-				from (SELECT GAME_ID, NATIONAL_CODE, GAME_IMG, GAME_NAME, GAME_PRICE,GAME_OPEN  FROM SHOP JOIN GAME USING(GAME_ID) ORDER BY GAME_ID DESC) t1 )
-		where rn between #{startRownum} and #{endRownum}
+				from (SELECT GAME_ID, NATIONAL_CODE, GAME_IMG, GAME_NAME, CONCAT(GAME_PRICE, '円') AS GAME_PRICE,GAME_OPEN  FROM SHOP JOIN GAME USING(GAME_ID) ORDER BY GAME_ID DESC) t1 )
+		where NATIONAL_CODE=2 and rn between #{startRownum} and #{endRownum}
+	</select>
+	<select id="selectPageKoreaList" resultType="ShopListDto" parameterType="map">
+		select GAME_ID, NATIONAL_CODE,GAME_IMG, GAME_NAME, GAME_PRICE ,to_char(GAME_OPEN,'YYYY-MM-DD') GAME_OPEN
+			from (select t1.*, rownum rn
+				from (SELECT GAME_ID, NATIONAL_CODE, GAME_IMG, GAME_NAME, CONCAT(GAME_PRICE, '₩') AS GAME_PRICE,GAME_OPEN  FROM SHOP JOIN GAME USING(GAME_ID) ORDER BY GAME_ID DESC) t1 )
+		where NATIONAL_CODE=1 and rn between #{startRownum} and #{endRownum}
+	</select>
+	<select id="selectOne" resultType="ShopReadDto" parameterType="map">
+		SELECT  NATIONAL_CODE,GAME_ID,GAME_IMG, GAME_NAME, 
+    CASE 
+        WHEN NATIONAL_CODE = 1 THEN CONCAT(GAME_PRICE, '₩')
+        WHEN NATIONAL_CODE = 2 THEN CONCAT(GAME_PRICE, '¥')
+    END AS GAME_PRICE,
+    TO_CHAR(GAME_OPEN, 'YYYY-MM-DD') AS GAME_OPEN,
+    GAME_CONTENT
+FROM (
+    SELECT t1.*, rownum rn FROM 
+    ( SELECT  GAME_ID,  NATIONAL_CODE,  GAME_IMG, GAME_NAME,  GAME_PRICE,  GAME_OPEN, GAME_CONTENT  
+      FROM SHOP JOIN GAME USING(GAME_ID)  ORDER BY GAME_ID DESC ) t1 
+    WHERE GAME_ID = #{gameId} AND NATIONAL_CODE = #{nationalCode})
 	</select>
 	
 	

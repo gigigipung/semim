@@ -1,3 +1,4 @@
+<jsp:include page="/WEB-INF/common_css_firstlink.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -103,7 +104,6 @@ function loadedHandler(){
 		,success: function(result){
 			console.log(result);
 			displayReplyWrap(result);
-			console.log("12");
 		}
 	});
 	

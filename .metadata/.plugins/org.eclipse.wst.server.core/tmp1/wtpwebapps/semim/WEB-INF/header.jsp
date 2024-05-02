@@ -3,25 +3,27 @@
 
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<div class="header">
+<div class="header-bar">
 <div ><label class="index">cloud</label></div>
-	
-
+<div class="header-menu">
 <c:choose>
-	<c:when test="${empty sss }">
-		<div><button class="btn join">회원가입</button></div>
-		<div><button class="btn login">로그인</button></div>
-	</c:when>
-	<c:otherwise>
-		<div>[[ 아이디 : ${sss.gamerId} ]]</div>
-		<form id="frm-logout">
-		<div><button class="btn logout">로그아웃</button></div>
-		</form>
-	</c:otherwise>
+    <c:when test="${empty sss or empty sss.gamerId}">
+        <div><button class="btn join">회원가입</button></div>
+        <div><button class="btn login">로그인</button></div>
+    </c:when>
+    <c:otherwise>
+        <div><button class="btn"> 아이디 : ${sss.gamerId}</button>  </div>
+        <form id="frm-logout" action="/logout" method="post">
+            <div><button class="btn logout" type="submit">로그아웃</button></div>
+        </form>
+    </c:otherwise>
 </c:choose>
 <div><button class="btn shop">상점</button></div>
 <div><button class="btn board">게시판</button></div>
-
+</div>
+</div>
+</div>
 <!-- 아래는 스크립트만 -->
 <script>
 $(loadedHandler);

@@ -6,23 +6,23 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="selectPageList"/>
+		<item key="selection" value="grid"/>
 		<list key="findhistory">
-			<item value="selectPageList"/>
-			<item value="count"/>
-			<item value="communityReplyContent"/>
-			<item value="communityReplyId"/>
-			<item value="ㄴ"/>
-			<item value="board"/>
+			<item value="id"/>
+			<item value="grid"/>
+			<item value="ㅎㄱgrid"/>
+			<item value="123"/>
+			<item value="shop-wrap"/>
+			<item value="ShopListDto"/>
 			<item value="reply-wrap"/>
-			<item value="CommunityReplyDto"/>
-			<item value="checkLogin"/>
-			<item value="msg"/>
-			<item value="login"/>
-			<item value="sslo"/>
-			<item value="sss"/>
-			<item value="ss"/>
-			<item value="json"/>
+			<item value="btnRReplyContentClickHandler"/>
+			<item value="RR"/>
+			<item value="/community/reply/read.ajax"/>
+			<item value="displayShopWrap"/>
+			<item value="displayReplyWrap"/>
+			<item value="ajaxErrorHandler"/>
+			<item value="communityId"/>
+			<item value="replyId"/>
 		</list>
 		<list key="replacehistory">
 			<item value="replyContent"/>

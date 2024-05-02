@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="gamer.model.dao.GamerDao"/>
-    <fullyQualifiedTypeName name="gamer.model.dto.GamerLoginDto"/>
     <fullyQualifiedTypeName name="gamer.model.dto.GamerJoinDto"/>
     <fullyQualifiedTypeName name="jdbc.common.JdbcTemplate"/>
     <fullyQualifiedTypeName name="org.apache.catalina.util.URLEncoder"/>
@@ -48,16 +46,18 @@
     <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSessionFactory"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="gamer.model.dto.GamerInfoDto"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="shop.model.service.ShopService"/>
     <fullyQualifiedTypeName name="javax.websocket.Session"/>
     <fullyQualifiedTypeName name="org.apache.catalina.Session"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="shop.model.dao.ShopDao"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
     <fullyQualifiedTypeName name="org.apache.ibatis.session.RowBounds"/>
     <fullyQualifiedTypeName name="shop.model.dto.ShopListDto"/>
     <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="javax.servlet.ServletRequest"/>
+    <fullyQualifiedTypeName name="shop.model.service.ShopService"/>
+    <fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
+    <fullyQualifiedTypeName name="shop.model.dto.ShopReadDto"/>
 </qualifiedTypeNameHistroy>

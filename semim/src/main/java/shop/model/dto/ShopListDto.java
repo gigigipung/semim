@@ -17,14 +17,14 @@ public class ShopListDto {
 	private Integer gameID;
 	private String gameImg;
 	private String gameName;
-	private Integer gamePrice;
+	private String gamePrice;
 	private String gameOpen;
 	@Override
 	public String toString() {
 		return "ShopListDto [nationalCode=" + nationalCode + ", gameID=" + gameID + ", gameImg=" + gameImg
 				+ ", gameName=" + gameName + ", gamePrice=" + gamePrice + ", gameOpen=" + gameOpen + "]";
 	}
-	public ShopListDto(Integer nationalCode, Integer gameID, String gameImg, String gameName, Integer gamePrice,
+	public ShopListDto(Integer nationalCode, Integer gameID, String gameImg, String gameName, String gamePrice,
 			String gameOpen) {
 		super();
 		this.nationalCode = nationalCode;
@@ -50,17 +50,13 @@ public class ShopListDto {
 		return gameName;
 	}
 
-	public Integer getGamePrice() {
+	public String getGamePrice() {
 		return gamePrice;
 	}
 
 	public String getGameOpen() {
 		return gameOpen;
 	}
-
-	
-
-
 
 	
 }

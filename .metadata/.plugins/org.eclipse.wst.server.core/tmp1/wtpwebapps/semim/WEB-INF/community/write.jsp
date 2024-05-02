@@ -1,3 +1,4 @@
+<jsp:include page="/WEB-INF/common_css_firstlink.jsp"/>
 <%@ page language="java" contentType="text/html; charset=UTF-8"    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -6,6 +7,7 @@
 <title>Semim Board Write</title>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <link href="<%=request.getContextPath()%>/resources/css/base.css" rel="stylesheet" type="text/css">
+<%@ include file="../common_function.jsp"%>
 <%@ include file="../header.jsp"%>
 </head>
 <body>
